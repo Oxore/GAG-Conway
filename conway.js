@@ -83,11 +83,11 @@
     function createSpeedSlider() {
         let speedSlider = document.createElement("INPUT");
         speedSlider.setAttribute("type", "range");
-        speedSlider.setAttribute("min", "100");
+        speedSlider.setAttribute("min", "10");
         speedSlider.setAttribute("max", "2000");
-        speedSlider.setAttribute("value", "500");
+        speedSlider.setAttribute("value", "1000");
         speedSlider.oninput = function() {
-            speed = parseInt(this.value);
+            speed = 100000/parseInt(this.value);
             if (gameState == "on") {
                 window.clearInterval(intervalContainer);
                 intervalContainer = window.setInterval(tick, speed);
@@ -222,6 +222,6 @@
         var speedSliderDiv = drawSpeedSlider(speedSlider, activityGraph[0]);
         startButton.addEventListener("click", switchGameState);
         var fakeRects, fakeRectsTmp, realRects = document.getElementsByClassName("day");
-        var intervalContainer, speed = 500, paused = 0;
+        var intervalContainer, speed = 100, paused = 0;
     }
 })();
