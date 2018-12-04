@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         GAG Conway's GoL
 // @namespace    https://github.com/Oxore/GAG-Conway
-// @version      0.1
+// @version      0.1.1
 // @description  Github activity graph based Conway's "Game of Life"
 // @author       Oxore
 // @match        https://github.com/*
@@ -65,18 +65,18 @@
 
     function createStartButton() {
         let startButton = document.createElement("Button");
-        let startButtonLabel = document.createTextNode("Play Conway's GoL");
+        let startButtonLabel = document.createTextNode("Play Game Of Life");
         startButton.appendChild(startButtonLabel);
         startButton.classList.add("btn");
         startButton.id = "GAG-conway-startButton";
         return startButton;
     }
 
-    function drawStartButton(startButton, activityGraph) {
+    function drawStartButton(startButton) {
         let startButtonDiv = document.createElement("div");
         startButtonDiv.style.clear = "left";
         startButtonDiv.appendChild(startButton);
-        let footer = activityGraph.getElementsByClassName("contrib-footer clearfix mt-1 mx-3 px-3 pb-1");
+        let footer = document.getElementsByClassName("contrib-footer clearfix mt-1 mx-3 px-3 pb-1");
         footer[0].appendChild(startButtonDiv);
     }
 
@@ -97,7 +97,7 @@
         return speedSlider;
     }
 
-    function drawSpeedSlider(speedSlider, activityGraph) {
+    function drawSpeedSlider(speedSlider) {
         let speedSliderDiv = document.createElement("div");
         speedSliderDiv.style.clear = "left";
         speedSlider.id = "GAG-conway-speedSlider-div";
@@ -105,7 +105,7 @@
         speedSliderLabelDiv.appendChild(document.createTextNode("Speed: (Press \"Space\" to pause)"));
         speedSliderDiv.appendChild(speedSliderLabelDiv);
         speedSliderDiv.appendChild(speedSlider);
-        let footer = activityGraph.getElementsByClassName("contrib-footer clearfix mt-1 mx-3 px-3 pb-1");
+        let footer = document.getElementsByClassName("contrib-footer clearfix mt-1 mx-3 px-3 pb-1");
         footer[0].appendChild(speedSliderDiv);
         speedSliderDiv.style.display = "none";
         return speedSliderDiv;
@@ -132,7 +132,7 @@
             window.removeEventListener("keydown", preventDefaultArrows, false);
             document.onkeydown = 0;
             window.clearInterval(intervalContainer);
-            startButton.innerText = "Play Conway's GoL";
+            startButton.innerText = "Play Game Of Life";
             speedSliderDiv.style.display = "none";
             gameState = "off";
         }
@@ -213,7 +213,7 @@
         copyField(fakeRects, fakeRectsTmp);
     }
 
-    var activityGraph = document.getElementsByClassName("js-contribution-graph");
+    var activityGraph = document.getElementsByClassName("js-calendar-graph");
     if (activityGraph.length > 0) {
         var gameState = "off";
         var startButton = createStartButton();
