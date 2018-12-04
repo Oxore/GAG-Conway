@@ -218,8 +218,8 @@
         var gameState = "off";
         var startButton = createStartButton();
         var speedSlider = createSpeedSlider();
-        drawStartButton(startButton, activityGraph[0]);
-        var speedSliderDiv = drawSpeedSlider(speedSlider, activityGraph[0]);
+        drawStartButton(startButton);
+        var speedSliderDiv = drawSpeedSlider(speedSlider);
         startButton.addEventListener("click", switchGameState);
         var fakeRects, fakeRectsTmp, realRects = document.getElementsByClassName("day");
         var intervalContainer, speed = 100, paused = 0;
